@@ -1,4 +1,4 @@
-package com.example.androidfirsthomework;
+package com.example.androidhomework;
 
 import org.junit.Test;
 

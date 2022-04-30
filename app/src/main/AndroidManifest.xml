@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.androidfirsthomework">
+    package="com.example.androidhomework">
 
     <application
         android:allowBackup="true"
@@ -10,11 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidFirstHomework">
         <activity
-            android:name=".SecondActivity"
+            android:name="com.example.androidhomework.SecondActivity"
             android:exported="false"
             android:label="Second Activity" />
         <activity
-            android:name=".FirstActivity"
+            android:name="com.example.androidhomework.FirstActivity"
             android:exported="true"
             android:label="First Activity">
             <intent-filter>

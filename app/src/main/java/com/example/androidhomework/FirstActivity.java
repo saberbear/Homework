@@ -1,4 +1,4 @@
-package com.example.androidfirsthomework;
+package com.example.androidhomework;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -34,7 +34,6 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first);
         Button button = findViewById(R.id.button);
         EditText editText = findViewById(R.id.edit);
-        button.setText("跳转");
         button.setOnClickListener(view -> {
             String firstActivityText = editText.getText().toString();
             Intent toSecondActivity = new Intent(FirstActivity.this, SecondActivity.class);
