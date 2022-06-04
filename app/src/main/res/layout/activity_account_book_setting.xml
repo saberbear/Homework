@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountBookSetting">
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/green"
+        android:gravity="center"
+        android:text="记账本"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <Switch
+        android:id="@+id/zdtb_switch"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="15dp"
+        android:text="自动同步微信支付账单"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/gray" />
+
+    <Switch
+        android:id="@+id/jzrb_switch"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="15dp"
+        android:text="记账日报"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginLeft="15dp"
+        tools:ignore="RtlHardcoded" />
+
+    <Switch
+        android:id="@+id/jzyb_switch"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="15dp"
+        android:text="记账月报"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,UseSwitchCompatOrMaterialXml" />
+
+    <TextView
+        android:id="@+id/switch_notion_text"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/gray"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="5dp"
+        android:text="@string/switch_notion"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_margin="15dp"
+        android:drawableRight="@drawable/ic_right_line"
+        android:text="每月收付款提醒"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,RtlHardcoded,UseCompatTextViewDrawableXml" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:id="@+id/flgl_layout"
+        android:layout_width="match_parent"
+        android:layout_height="55dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分类管理"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            tools:ignore="HardcodedText" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_new"
+            android:layout_gravity="center"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawableRight="@drawable/ic_right_line"
+            android:layout_margin="15dp"
+            tools:ignore="RtlHardcoded,UseCompatTextViewDrawableXml" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/recommend"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:drawableLeft="@drawable/ic_recommend"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:text="把帐本推荐给朋友"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,RtlHardcoded,UseCompatTextViewDrawableXml" />
+
+    <RelativeLayout
+        android:id="@+id/FAQ"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/gray">
+
+        <ImageView
+            android:id="@+id/vertical_line"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/ic_vertical_line"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_toLeftOf="@id/vertical_line"
+            android:text="常见问题"
+            android:textColor="@color/blue"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="12dp"
+            android:layout_toRightOf="@id/vertical_line"
+            android:text="我要反馈"
+            android:textColor="@color/blue"
+            tools:ignore="HardcodedText,RtlHardcoded" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        tools:ignore="DisableBaselineAlignment">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+            
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_detail"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="明细"
+                tools:ignore="HardcodedText" />
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_statistic"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="统计"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_setting"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="设置"
+                android:textColor="@color/green"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

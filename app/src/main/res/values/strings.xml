@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AndroidHomework</string>
+    <string name="switch_notion">开启后，你将在每日上午接收记账日报，在每月1号上午接收记账月报。</string>
 </resources>
