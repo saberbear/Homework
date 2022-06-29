@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidHomework" >
+
         <activity
-            android:name=".AccountBookSettingActivity"
+            android:name=".ClassMemberActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
