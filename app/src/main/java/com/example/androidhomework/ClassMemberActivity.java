@@ -42,7 +42,19 @@ public class ClassMemberActivity extends BaseActivity {
         Log.i("dbQueryResult", "数据库表查询结果：" + classMemberList.toString());
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(layoutManager);
-        ClassMemberAdapter adapter = new ClassMemberAdapter(classMemberList);
+        // mark: 用ClassMemberItemLongClickListener的匿名内部类，将长按时需要ClassMemberActivity做的逻辑传递给Adapter。
+        // mark：从功能上说，onLongClickFlag、removeNameText这些逻辑都是没用的。这里是讲解如何解耦，其实ClassMemberActivity中所有关于长按的逻辑都可以删除
+        //   因为所有的长按点击逻辑在Adapter中就可以做了
+        ClassMemberAdapter adapter = new ClassMemberAdapter(classMemberList, new ClassMemberAdapter.ClassMemberItemLongClickListener() {
+            public void onItemLongClick(String event, String itemName) {
+                switch (event) {
+                    case LONG_CLICK: {
+                        onLongClickFlag = true;
+                        removeNameText = nameText;
+                    }
+                }
+            }
+        });
         binding.recyclerView.setAdapter(adapter);
 
         if (onLongClickFlag) {
@@ -99,6 +111,7 @@ public class ClassMemberActivity extends BaseActivity {
 
         return mLinearLayout;
     }
+    // mark：可以删除
     // 供外部类调用的static方法（长按删除通知）
     public static void mClassMemberActivityTodo(String event, String nameText) {
         switch (event) {
