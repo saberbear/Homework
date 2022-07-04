@@ -3,6 +3,7 @@ package com.example.androidhomework;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -26,6 +27,11 @@ public class ClassDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TABLE_CREATE_SQL);
+        db.execSQL("insert into " + TABLE_NAME + "(name, class) values ('张三', '三班')");
+        db.execSQL("insert into " + TABLE_NAME + "(name, class) values ('李四', '四班')");
+        db.execSQL("insert into " + TABLE_NAME + "(name, class) values ('王五', '五班')");
+        // point4: 重要的代码要写日志
+        Log.i("dpHelper", "helper oncreate has executed");
     }
 
     @Override

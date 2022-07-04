@@ -15,6 +15,7 @@ public class ClassMemberAdapter extends RecyclerView.Adapter<ClassMemberAdapter.
 
     private final ArrayList<ClassMember> classMemberList;
 
+    // point3: 解除Adapter和Activity的耦合关系
     public ClassMemberAdapter(ArrayList<ClassMember> classMemberList) {
         this.classMemberList = classMemberList;
     }
