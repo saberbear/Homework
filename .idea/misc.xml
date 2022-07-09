@@ -3,23 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_detail.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_new.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_recommend.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_right_line.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_setting.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_statistic.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/drawable/ic_vertical_line.xml" value="0.1905" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_account_book_setting.xml" value="0.27291666666666664" />
         <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_class_member.xml" value="0.27291666666666664" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_classmate.xml" value="0.27291666666666664" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_first.xml" value="0.27291666666666664" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_main.xml" value="0.25833333333333336" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_second.xml" value="0.27291666666666664" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/class_member_item.xml" value="0.1" />
-        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/title.xml" value="0.271875" />
+        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/class_member_item.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>

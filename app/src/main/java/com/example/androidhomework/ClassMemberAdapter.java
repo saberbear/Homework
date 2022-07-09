@@ -13,13 +13,13 @@ import java.util.ArrayList;
 
 public class ClassMemberAdapter extends RecyclerView.Adapter<ClassMemberAdapter.ViewHolder> {
 
-    private final ArrayList<ClassMember> classMemberList;
-    private ClassMemberItemLongClickListener longClickListener;
+    private ArrayList<ClassMember> classMemberList;
 
-    // point3: 解除Adapter和Activity的耦合关系
-    public ClassMemberAdapter(ArrayList<ClassMember> classMemberList, ClassMemberItemLongClickListener longClickListener) {
+    private ClassDatabaseCollector dbCollector;
+
+    public ClassMemberAdapter(ArrayList<ClassMember> classMemberList, ClassDatabaseCollector dbCollector) {
         this.classMemberList = classMemberList;
-        this.longClickListener = longClickListener;
+        this.dbCollector = dbCollector;
     }
 
     @NonNull
@@ -30,16 +30,12 @@ public class ClassMemberAdapter extends RecyclerView.Adapter<ClassMemberAdapter.
         // 长按监听：删除item
         viewHolder.itemView.setOnLongClickListener(view -> {
             int position = viewHolder.getAdapterPosition();
-            // mark：用longClickListener替换直接调用ClassMemberActivity的方法
-            // 将长按item对应的学生姓名发送至ClassMemberActivity
-//            ClassMemberActivity.mClassMemberActivityTodo(ClassMemberActivity.LONG_CLICK, classMemberList.get(position).getNameText());
-            this.longClickListener.onItemLongClick("long_click", classMemberList.get(position).getNameText());
+            // 在数据库中移除此段
+            dbCollector.deleteData(classMemberList.get(position).getNameText());
             // 在ArrayList中移除此段
             classMemberList.remove(position);
             // 通知移除该item
             notifyItemRemoved(position);
-            // 通知调制ArrayList顺序
-            notifyItemRangeChanged(position, classMemberList.size());
             return false;
         });
 
@@ -70,7 +66,4 @@ public class ClassMemberAdapter extends RecyclerView.Adapter<ClassMemberAdapter.
         }
     }
 
-    public static interface ClassMemberItemLongClickListener {
-        public void onItemLongClick(String event, String itemName);
-    }
 }

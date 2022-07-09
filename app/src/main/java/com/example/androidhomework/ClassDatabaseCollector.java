@@ -17,9 +17,7 @@ public class ClassDatabaseCollector {
     private final int version;
 
     private final SQLiteDatabase db;
-    // point1:
-    // 代码规范：类属性应该在方法里初始化，不要直接初始化。
-    // 代码原理：类属性初始化的时机先于构造器执行
+
     public ClassDatabaseCollector(Context context, String tableName, int version) {
         this.context = context;
         this.tableName = tableName;
