@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_class_member.xml" value="0.27291666666666664" />
         <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_main.xml" value="0.25833333333333336" />
+        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/activity_notification.xml" value="0.25833333333333336" />
+        <entry key="..\:/GitDemo/Homework/app/src/main/res/layout/class_member_item.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>
