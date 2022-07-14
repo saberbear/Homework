@@ -3,67 +3,34 @@ package com.example.homework;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
 
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.widget.ImageView;
 
 import com.example.homework.databinding.ActivityMainBinding;
 
-import java.io.File;
-import java.io.IOException;
-
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    private ActivityMainBinding binding;
 
-    private Uri imageUri;
+    ActivityResultLauncher<Void> takePhoto = registerForActivityResult(
+            new ActivityResultContracts.TakePicturePreview(), bitmap -> binding.imageView.setImageBitmap(bitmap));
 
-    ActivityResultLauncher<Uri> takePhoto = registerForActivityResult(
-            new ActivityResultContracts.TakePicture(), result -> {
-                if (result) {
-                    if (imageUri != null) {
-                        imageView.setImageURI(imageUri);
-                    }
+    ActivityResultLauncher<String> selectMultiplePicture = registerForActivityResult(
+            new ActivityResultContracts.GetMultipleContents(), uriList -> {
+                if (uriList.size() > 1) {
+                    binding.imageView.setImageURI(uriList.get(0));
+                    binding.imageView2.setImageURI(uriList.get(1));
                 }
             });
-
-    ActivityResultLauncher<String> selectPicture = registerForActivityResult(
-            new ActivityResultContracts.GetContent(), uri -> imageView.setImageURI(uri));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        imageView = binding.imageView;
+        binding.takePhotoButton.setOnClickListener(view -> takePhoto.launch(null));
 
-        binding.takePhotoButton.setOnClickListener(view -> {
-            File outputImage = new File(getExternalCacheDir(), "output_image.jpg");
-
-            try {
-                if (outputImage.exists()) {
-                    outputImage.delete();
-                }
-                outputImage.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            if (Build.VERSION.SDK_INT >= 24) {
-                imageUri = FileProvider.getUriForFile(MainActivity.this,
-                        "com.example.homework.provider",
-                        outputImage);
-            } else {
-                imageUri = Uri.fromFile(outputImage);
-            }
-
-            takePhoto.launch(imageUri);
-        });
-
-        binding.fromAlbumButton.setOnClickListener(view -> selectPicture.launch("image/*"));
+        binding.fromAlbumButton.setOnClickListener(view -> selectMultiplePicture.launch("image/*"));
     }
 }
