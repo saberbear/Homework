@@ -3,14 +3,15 @@ package com.example.homework;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.homework.databinding.ActivityMainBinding;
 
-import org.xmlpull.v1.XmlPullParser;
-import org.xmlpull.v1.XmlPullParserFactory;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import java.io.StringReader;
+
+import javax.xml.parsers.SAXParserFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -36,48 +37,20 @@ public class MainActivity extends AppCompatActivity {
                         .build();
                 Response response = client.newCall(request).execute();
                 String responseData = response.body().string();
-                parseXMLWithPull(responseData);
+                parseXMLWithSAX(responseData);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
     }
 
-    private void parseXMLWithPull(String xmlData) {
+    private void parseXMLWithSAX(String xmlData) {
         try {
-            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-            XmlPullParser xmlPullParser = factory.newPullParser();
-            xmlPullParser.setInput(new StringReader(xmlData));
-            int eventType = xmlPullParser.getEventType();
-            String id = "";
-            String name = "";
-            String version = "";
-            while (eventType != XmlPullParser.END_DOCUMENT) {
-                String nodeName = xmlPullParser.getName();
-                switch (eventType) {
-                    case XmlPullParser.START_TAG: {
-                        if ("id".equals(nodeName)) {
-                            id = xmlPullParser.nextText();
-                        } else if ("name".equals(nodeName)) {
-                            name = xmlPullParser.nextText();
-                        } else if ("version".equals(nodeName)) {
-                            version = xmlPullParser.nextText();
-                        }
-                        break;
-                    }
-                    case XmlPullParser.END_TAG: {
-                        if ("app".equals(nodeName)) {
-                            Log.d("MainActivity", "id is " + id);
-                            Log.d("MainActivity", "name is " + name);
-                            Log.d("MainActivity", "version is " + version);
-                        }
-                        break;
-                    }
-                    default:
-                        break;
-                }
-                eventType = xmlPullParser.next();
-            }
+            SAXParserFactory factory = SAXParserFactory.newInstance();
+            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
+            ContentHandler handler = new ContentHandler();
+            xmlReader.setContentHandler(handler);
+            xmlReader.parse(new InputSource(new StringReader(xmlData)));
         } catch (Exception e) {
             e.printStackTrace();
         }
