@@ -3,9 +3,12 @@ package com.example.homework;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.homework.databinding.ActivityMainBinding;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
@@ -33,24 +36,29 @@ public class MainActivity extends AppCompatActivity {
             try {
                 OkHttpClient client = new OkHttpClient();
                 Request request = new Request.Builder()
-                        .url("http://10.0.2.2/get_data.xml")
+                        .url("http://10.0.2.2/get_data.json")
                         .build();
                 Response response = client.newCall(request).execute();
                 String responseData = response.body().string();
-                parseXMLWithSAX(responseData);
+                parseJSONWithJSONObject(responseData);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }).start();
     }
 
-    private void parseXMLWithSAX(String xmlData) {
+    private void parseJSONWithJSONObject(String jsonData) {
         try {
-            SAXParserFactory factory = SAXParserFactory.newInstance();
-            XMLReader xmlReader = factory.newSAXParser().getXMLReader();
-            ContentHandler handler = new ContentHandler();
-            xmlReader.setContentHandler(handler);
-            xmlReader.parse(new InputSource(new StringReader(xmlData)));
+            JSONArray jsonArray = new JSONArray(jsonData);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String id = jsonObject.getString("id");
+                String name = jsonObject.getString("name");
+                String version = jsonObject.getString("version");
+                Log.d("MainActivity", "id is " + id);
+                Log.d("MainActivity", "name is " + name);
+                Log.d("MainActivity", "version is " + version);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
