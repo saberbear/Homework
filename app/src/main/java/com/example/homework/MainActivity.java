@@ -12,6 +12,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
@@ -22,39 +26,21 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.sendRequestButton.setOnClickListener(view -> sendRequestWithHttpURLConnection());
+        binding.sendRequestButton.setOnClickListener(view -> sendRequestWithOkHttp());
     }
 
-    private void sendRequestWithHttpURLConnection() {
+    private void sendRequestWithOkHttp() {
         new Thread(() -> {
-            HttpURLConnection connection = null;
-            BufferedReader reader = null;
             try {
-                StringBuilder response = new StringBuilder();
-                URL url = new URL("https://www.baidu.com");
-                connection = (HttpURLConnection) url.openConnection();
-                connection.setConnectTimeout(8000);
-                connection.setReadTimeout(8000);
-                InputStream input = connection.getInputStream();
-                reader = new BufferedReader(new InputStreamReader(input));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    response.append(line);
-                }
-                showResponse(response.toString());
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url("https://www.baidu.com")
+                        .build();
+                Response response = client.newCall(request).execute();
+                String responseData = response.body().string();
+                showResponse(responseData);
             } catch (Exception e) {
                 e.printStackTrace();
-            } finally {
-                if (reader != null) {
-                    try {
-                        reader.close();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                if (connection != null) {
-                    connection.disconnect();
-                }
             }
         }).start();
     }
